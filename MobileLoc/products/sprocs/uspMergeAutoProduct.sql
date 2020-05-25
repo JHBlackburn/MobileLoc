@@ -11,21 +11,25 @@
 		IF(@make is null)
 		BEGIN
 			RAISERROR('Param: Make cannot be null', 16, 1)
+			RETURN
 		END	
 
 		IF(@model is null)
 		BEGIN
 			RAISERROR('Param: Model cannot be null', 16, 1)
+			RETURN
 		END	
 
 		IF(@ilcoEntryName is null)
 		BEGIN
 			RAISERROR('Param: IlcoEntryName cannot be null', 16, 1)
+			RETURN
 		END	
 
-		IF(@make is null)
+		IF(@ilcoDetails is null)
 		BEGIN
 			RAISERROR('Param: IlcoDetails cannot be null', 16, 1)
+			RETURN
 		END	
 
 		/************* BEGIN MERGE *********************/
@@ -46,8 +50,8 @@
 		
 			WHEN MATCHED 
 			AND (
-				ISNULL(t.IlcoDetails,'') <> ISNULL(s.IlcoDetails,'')
-				OR ISNULL(t.PriceUSD,0) <> ISNULL(s.PriceUSD, 0)
+				ISNULL(t.IlcoDetails, '') <> ISNULL(s.IlcoDetails, '')
+				OR ISNULL(t.PriceUSD, 0) <> ISNULL(s.PriceUSD, 0)
 				)
 				THEN UPDATE 
 					SET 
