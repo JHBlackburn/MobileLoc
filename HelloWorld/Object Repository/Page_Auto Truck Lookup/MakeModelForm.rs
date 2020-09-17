@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>MakeModelForm</name>
+   <tag></tag>
+   <elementGuidId>89f9ccf2-cf40-44ea-bb5f-43e211fe1ae9</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value>/div[1]/div/div[1]/h2[count(. | //*[@ref_element = 'Object Repository/Page_Auto Truck Lookup/iframe_AutoTruckLookup']) = count(//*[@ref_element = 'Object Repository/Page_Auto Truck Lookup/iframe_AutoTruckLookup'])]</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//form[@id='makeModelForm']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <useRalativeImagePath>false</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>results</value>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>/div[1]/div/div[1]/h2</value>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/Page_Auto Truck Lookup/iframe_AutoTruckLookup</value>
+   </webElementProperties>
+</WebElementEntity>

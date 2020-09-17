@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>SelectTheEntryText</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>0f2006cd-a3f3-45bf-ab87-de0aac44137b</testCaseGuid>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>4f6089cb-521b-47d1-916c-e3908a6a71be</id>
+      <masked>false</masked>
+      <name>thisEntryName</name>
+   </variable>
+</TestCaseEntity>

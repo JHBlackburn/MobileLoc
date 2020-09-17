@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Open google, type something, and click search</description>
+   <name>TC1</name>
+   <tag>Automation_Web</tag>
+   <comment></comment>
+   <testCaseGuid>f9379a00-66b1-4098-bef8-e132a2147e00</testCaseGuid>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>ac531dc2-b42d-48d5-86b7-a1fd63192753</id>
+      <masked>false</masked>
+      <name>thisMakeIndex</name>
+   </variable>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>96d37dce-d063-49e2-b585-d226a93b66ea</id>
+      <masked>false</masked>
+      <name>thisModelIndex</name>
+   </variable>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>b7941f6e-dc6a-4d44-9dad-c8623f2c82d1</id>
+      <masked>false</masked>
+      <name>numberOfMakes</name>
+   </variable>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>772a1d16-a196-40e4-ad17-2b4ee4f85fe9</id>
+      <masked>false</masked>
+      <name>numberOfModels</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>7d5016cf-4c86-4a4b-b55f-a8e477309a1e</id>
+      <masked>false</masked>
+      <name>thisEntryText</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>1a82bf2b-9f41-47da-885a-636387fc8dea</id>
+      <masked>false</masked>
+      <name>thisEntryDetailText</name>
+   </variable>
+   <variable>
+      <defaultValue>findTestObject(null)</defaultValue>
+      <description></description>
+      <id>46507e07-b769-4d7a-a524-d9d3561747fc</id>
+      <masked>false</masked>
+      <name>thisEntry</name>
+   </variable>
+</TestCaseEntity>
