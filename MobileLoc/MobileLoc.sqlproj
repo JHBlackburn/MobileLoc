@@ -61,6 +61,8 @@
     <Folder Include="products" />
     <Folder Include="products\sprocs" />
     <Folder Include="stage" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\PostDeploy" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schemas\products.sql" />
@@ -68,5 +70,11 @@
     <None Include="products\sprocs\uspMergeAutoProduct.sql" />
     <Build Include="Schemas\stage.sql" />
     <Build Include="stage\IlcoEntry.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\PostDeploy\Script.PostDeploy.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\PostDeploy\SeedAutoProduct.sql" />
   </ItemGroup>
 </Project>

@@ -6,10 +6,10 @@
 	ModelName varchar(100) NOT NULL,
 	[Year] INT NOT NULL,
 	IlcoEntryTitle varchar(100) NOT NULL,
-	IlcoKeyBlanks VARCHAR(1000) NOT NULL,
-	IlcoCodeSeries VARCHAR(1000) NOT NULL,
-	IlcoProgramWith VARCHAR(1000) NOT NULL,
-	IlcoSubstitute VARCHAR(1000) NOT NULL,
-	IlcoNotes VARCHAR(1000) NOT NULL,
+	IlcoKeyBlanks VARCHAR(1000) NULL,
+	IlcoCodeSeries VARCHAR(1000) NULL,
+	IlcoProgramWith VARCHAR(1000) NULL,
+	IlcoSubstitute VARCHAR(1000) NULL,
+	IlcoNotes VARCHAR(1000) NULL,
 	SetUpKeysPriceUSD DECIMAL(18,6) NULL
 )
