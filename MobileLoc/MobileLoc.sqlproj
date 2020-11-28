@@ -65,7 +65,7 @@
   <ItemGroup>
     <Build Include="Schemas\products.sql" />
     <Build Include="products\AutoProduct.sql" />
-    <Build Include="products\sprocs\uspMergeAutoProduct.sql" />
+    <None Include="products\sprocs\uspMergeAutoProduct.sql" />
     <Build Include="Schemas\stage.sql" />
     <Build Include="stage\IlcoEntry.sql" />
   </ItemGroup>
