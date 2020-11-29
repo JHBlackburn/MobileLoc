@@ -5866,6 +5866,90 @@
 	( 'WHITE-GMC-VOLVO', 'Volvo Loader', '1987 - 1987 WHITE-GMC-VOLVO Volvo Loader', 'X51 AA2', '2001-4949 Card: 118', '-', '', '' )
 	---------------------------------------------------------------
 
+
+
+
+
+
+	
+		/*************************BEGIN MERGE**********************************/
+		MERGE INTO stage.IlcoEntry AS t  
+				USING 
+				(
+					SELECT
+						MakeName,
+						ModelName,
+						EntryTitle,
+						KeyBlankDetails,
+						CodeSeriesText,
+						SubstituteText,
+						ProgramWithText,
+						NotesText,
+						IsActive = 1
+
+						FROM #ilcoKeyBlankEntry
+				)  AS s  
+				ON s.MakeName = t.MakeName
+				AND s.ModelName = t.ModelName
+				AND s.EntryTitle = t.EntryTitle
+				WHEN MATCHED 
+					THEN UPDATE 
+						SET 
+							t.KeyBlankDetails = s.KeyBlankDetails,
+							t.CodeSeriesText = s.CodeSeriesText,
+							t.SubstituteText = s.SubstituteText,
+							t.ProgramWithText = s.ProgramWithText,
+							t.NotesText = s.NotesText,
+							t.IsActive = s.IsActive
+
+				WHEN NOT MATCHED BY TARGET THEN  
+					INSERT 
+					(
+						MakeName,
+						ModelName,
+						EntryTitle,
+						KeyBlankDetails,
+						CodeSeriesText,
+						SubstituteText,
+						ProgramWithText,
+						NotesText
+					) 	
+					VALUES
+					(
+						MakeName,
+						ModelName,
+						EntryTitle,
+						KeyBlankDetails,
+						CodeSeriesText,
+						SubstituteText,
+						ProgramWithText,
+						NotesText
+					)
+
+				WHEN NOT MATCHED BY SOURCE THEN 
+					UPDATE 
+						SET 
+							IsActive = 0,
+							DateModified = GETUTCDATE()
+					;
+		/*************************END MERGE**********************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	DROP TABLE IF EXISTS #distinctKeyBlank
 
 	SELECT DISTINCT 
