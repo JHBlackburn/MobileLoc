@@ -5909,25 +5909,10 @@
 		WHERE KeyBlankType IS NULL 
 		AND (KeyBlankDetails LIKE '%VATS%')
 
-		--select * from #distinctKeyBlank
-
 		UPDATE #distinctKeyBlank
 		SET KeyBlankType = 'Metal'
 		WHERE KeyBlankType IS NULL
 
-		--select * from #distinctKeyBlank
-
-		SELECT * FROM #distinctKeyBlank kb
-		JOIN #ilcoKeyBlankEntry ilco
-		ON ilco.KeyBlankDetails = kb.KeyBlankDetails
-		ORDER BY KeyBlankType
-
-		--select * from #distinctKeyBlank
-
-
-
-		--select * from stage.IlcoEntryKeyBlank
-		--TRUNCATE TABLE stage.IlcoEntryKeyBlank
 		/*************************BEGIN MERGE**********************************/
 		MERGE INTO stage.IlcoEntryKeyBlank AS t  
 				USING 
@@ -5955,10 +5940,12 @@
 						KeyBlankDetails,
 						KeyBlankType
 					)
+
+				WHEN NOT MATCHED BY SOURCE 
+					THEN DELETE
 				;
 		/*************************END MERGE**********************************/
 
-		select * from stage.IlcoEntryKeyBlank
 
 
 		------------------------------------------------------------------------------------------------
