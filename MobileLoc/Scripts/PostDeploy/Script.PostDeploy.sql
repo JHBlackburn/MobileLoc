@@ -9,5 +9,6 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+
 :r .\SeedAutoProduct.sql
 --:r .\SeedReflashAuto.sql
