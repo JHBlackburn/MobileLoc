@@ -3,7 +3,7 @@
 	MakeName NVARCHAR(100) NOT NULL,
 	ModelName NVARCHAR(100) NOT NULL,
 	EntryTitle NVARCHAR(500) NOT NULL,
-	KeyBlankDetails NVARCHAR(500) NULL,
+	KeyBlankDetails NVARCHAR(500) NOT NULL,
 	CodeSeriesText NVARCHAR(500) NULL,
 	SubstituteText NVARCHAR(500) NULL,
 	ProgramWithText NVARCHAR(500) NULL,
@@ -12,7 +12,6 @@
 	DateCreated DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
 	DateModified DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
 
-
+	CONSTRAINT PK_stage_IlcoEntry PRIMARY KEY CLUSTERED (MakeName, ModelName, EntryTitle, KeyBlankDetails)
 )
 GO
-	CREATE CLUSTERED INDEX CI_IlcoEntry ON stage.[IlcoEntry] (MakeName, ModelName, EntryTitle, KeyBlankDetails)

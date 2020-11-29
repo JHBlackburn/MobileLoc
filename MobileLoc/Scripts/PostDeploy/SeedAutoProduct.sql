@@ -5876,7 +5876,7 @@
 		MERGE INTO stage.IlcoEntry AS t  
 				USING 
 				(
-					SELECT
+					SELECT DISTINCT
 						MakeName,
 						ModelName,
 						EntryTitle,
