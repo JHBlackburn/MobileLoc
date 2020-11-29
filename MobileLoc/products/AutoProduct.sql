@@ -11,5 +11,6 @@
 	IlcoProgramWith VARCHAR(1000) NULL,
 	IlcoSubstitute VARCHAR(1000) NULL,
 	IlcoNotes VARCHAR(1000) NULL,
+	IsReflashRequired BIT NOT NULL DEFAULT 0,
 	SetUpKeysPriceUSD DECIMAL(18,6) NULL
 )

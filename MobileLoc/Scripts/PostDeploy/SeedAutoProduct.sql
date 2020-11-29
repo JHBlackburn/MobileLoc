@@ -1,4 +1,7 @@
-﻿	DROP TABLE IF EXISTS #ilcoKeyBlankEntry
+﻿--ALTER PROCEDURE uspMergeAutoProduct
+--AS BEGIN
+
+	DROP TABLE IF EXISTS #ilcoKeyBlankEntry
 
 	CREATE TABLE #ilcoKeyBlankEntry
 	(
@@ -6057,3 +6060,6 @@
 		/*************************END MERGE**********************************/
 
 
+--END
+
+SELECT * from products.AutoProduct

@@ -1,0 +1,26 @@
+﻿CREATE TABLE [stage].[SquareItem]
+(
+	[Token] nvarchar(255) NULL,
+	[Item Name] nvarchar(255) NULL,
+	[Description] nvarchar(255) NULL,
+	[Category] nvarchar(255) NULL,
+	[SKU] nvarchar(255) NULL,
+	[Variation Name] nvarchar(255) NULL,
+	[Price] float NULL,
+	[Option Name 1] nvarchar(255) NULL,
+	[Option Value 1] nvarchar(255) NULL,
+	[Current Quantity Mobile Locksmith, Inc#] nvarchar(255) NULL,
+	[New Quantity Mobile Locksmith, Inc#] nvarchar(255) NULL,
+	[Stock Alert Enabled Mobile Locksmith, Inc#] nvarchar(255) NULL,
+	[Stock Alert Count Mobile Locksmith, Inc#] nvarchar(255) NULL,
+	[Modifier Set - Automotive - Hi-Security] nvarchar(255) NULL,
+	[Modifier Set - Automotive - Metal] nvarchar(255) NULL,
+	[Modifier Set - Automotive - Proximity] nvarchar(255) NULL,
+	[Modifier Set - Automotive - Remotes] nvarchar(255) NULL,
+	[Modifier Set - Automotive - Transponder] nvarchar(255) NULL,
+	[Modifier Set - Automotive - VATS] nvarchar(255) NULL,
+	[Modifier Set - Key Blanks Costs] nvarchar(255) NULL,
+	[Modifier Set - Lock Finishes] nvarchar(255) NULL,
+	[Modifier Set - Lock Functions] nvarchar(255) NULL,
+	[Tax - Sales Tax (7%)] nvarchar(255) NULL
+) ON [PRIMARY]
