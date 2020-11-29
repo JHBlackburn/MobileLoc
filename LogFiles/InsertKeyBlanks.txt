@@ -5860,4 +5860,96 @@ VALUES
 ( 'WHITE-GMC-VOLVO', 'US Designed', 'Pre 1980 - 1980 WHITE-GMC-VOLVO US Designed', 'O1122A Y12', 'H601-H1100 Card: 142', '1098GM', '', '' ),
 ( 'WHITE-GMC-VOLVO', 'US Designed', '1992 - 1999 WHITE-GMC-VOLVO US Designed', '1970AM RA4', 'H601-H1100 Card: 142', '1098GM', '', '' ),
 ( 'WHITE-GMC-VOLVO', 'US Designed', '1980 - 1996 WHITE-GMC-VOLVO US Designed', '1970AM RA4', 'H601-H1100 Card: 142', '1098GM', '', '' ),
-( 'WHITE-GMC-VOLVO', 'Volvo Loader', '1987 - 1987 WHITE-GMC-VOLVO Volvo Loader', 'X51 AA2', '2001-4949 Card: 118', '-', '', '' )
+( 'WHITE-GMC-VOLVO', 'Volvo Loader', '1987 - 1987 WHITE-GMC-VOLVO Volvo Loader', 'X51 AA2', '2001-4949 Card: 118', '-', '', '' )DROP TABLE IF EXISTS #ilcoKeyBlankEntry
+
+CREATE TABLE #ilcoKeyBlankEntry
+(
+MakeName NVARCHAR(1000),
+ModelName NVARCHAR(1000),
+EntryTitle NVARCHAR(1000),
+KeyBlankDetails NVARCHAR(1000),
+CodeSeriesText NVARCHAR(1000),
+SubstituteText NVARCHAR(1000),
+ProgramWithText NVARCHAR(1000),
+NotesText NVARCHAR(1000)
+)
+
+
+
+INSERT INTO #ilcoKeyBlankEntry
+(
+MakeName,
+ModelName,
+EntryTitle,
+KeyBlankDetails,
+CodeSeriesText,
+SubstituteText,
+ProgramWithText,
+NotesText
+) 
+
+VALUES
+
+( 'ACURA', 'CL', '1998 - 2003 ACURA CL', 'HD106-PT', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'CL', '1998 - 2003 ACURA CL', 'HD106-PT5', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'CL', '1998 - 2003 ACURA CL', 'HD107-PT', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'CL', '1998 - 2003 ACURA CL', 'HD107-PT5', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'CL', '1995 - 1998 ACURA CL', 'X214 HD103 [-P, -PC]', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'CL', '1995 - 1998 ACURA CL', 'X215 HD104', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'CSX (Canada)', '2006 - 2011 ACURA CSX (Canada)', 'HO03-PT(V)', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'CSX (Canada)', '2006 - 2011 ACURA CSX (Canada)', 'EK3P-HO03 EK3LB-HO03 HO03-GTK', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'EL (Canada)', '2003 - 2005 ACURA EL (Canada)', 'HO01-PT', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'EL (Canada)', '2003 - 2005 ACURA EL (Canada)', 'HO01T5', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'EL (Canada)', '2001 - 2002 ACURA EL (Canada)', 'HD106-PT', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'EL (Canada)', '2001 - 2002 ACURA EL (Canada)', 'HD106-PT5', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'ILX', '2018 - 2020 ACURA ILX Prem/TechPlus', 'OEM 72147-TX6-C61
+72147-TX6-C71', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP (Thru 2018)', 'Philips (46) Encrypted System' ),
+( 'ACURA', 'ILX', '2016 - 2020 ACURA ILX Base', 'OEM 72147-TX6-C51
+72147-TX6-C61', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP (Thru 2018)', 'Philips (46) Encrypted System' ),
+( 'ACURA', 'ILX', '2016 - 2018 ACURA ILX', 'OEM 72147-TZ3-A01
+72147-TZ3-A11', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP (Thru 2018)', 'Philips (46) Encrypted System' ),
+( 'ACURA', 'ILX', '2013 - 2015 ACURA ILX', 'OEM 72147-TX6-A01
+72147-TX6-A11', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP (Thru 2018)', 'Philips (46) Encrypted System' ),
+( 'ACURA', 'ILX Base', '2016 - 2020 ACURA ILX Base', 'OEM 72147-TX6-C51
+72147-TX6-C61', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP (Thru 2018)', '' ),
+( 'ACURA', 'ILX Prem/TechPlus', '2018 - 2020 ACURA ILX Prem/TechPlus', 'OEM 72147-TX6-C61
+72147-TX6-C71', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP (Thru 2018)', '' ),
+( 'ACURA', 'Integra', '2000 - 2001 ACURA Integra', 'HD106-PT', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'Integra', '2000 - 2001 ACURA Integra', 'HD106-PT5', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'Integra', '2000 - 2001 ACURA Integra', 'HD107-PT', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'Integra', '2000 - 2001 ACURA Integra', 'HD107-PT5', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'Integra', '1990 - 1999 ACURA Integra', 'X214 HD103 [-P, -PC]', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'Integra', '1990 - 1999 ACURA Integra', 'X215 HD104', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'Integra', '1984 - 1989 ACURA Integra', 'X183 HD92 [-P]', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'Integra', '1984 - 1989 ACURA Integra', 'X189 HD93', '5001-8442 Card: 262', 'Service Key HD103-NP', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'Legend', '1991 - 1996 ACURA Legend', 'X208 HD101 [-P]', '3001-4481 Card: 148', 'X183/HD92', '', '' ),
+( 'ACURA', 'Legend', '1991 - 1996 ACURA Legend', 'X209 HD970 [-P]', '3001-4481 Card: 148', 'X183/HD92', '', '' ),
+( 'ACURA', 'Legend', '1986 - 1990 ACURA Legend', 'X183 HD92 [-P]', '3001-4481 Card: 148', 'X183/HD92', '', '' ),
+( 'ACURA', 'Legend', '1986 - 1990 ACURA Legend', 'X189 HD93', '3001-4481 Card: 148', 'X183/HD92', '', '' ),
+( 'ACURA', 'MDX', '2019 - 2020 ACURA MDX', 'OEM 72147-TZ5-A01 A11
+72147-TJB-A41 A51', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'MDX', '2018 - 2018 ACURA MDX', 'OEM 72147-TZ6-A71
+72147-TZ6-A81', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'MDX', '2014 - 2017 ACURA MDX', 'OEM 72147-TZ5-A01
+72147-TZ5-A11', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'MDX', '2007 - 2013 ACURA MDX', 'HO03-PT(V)', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'MDX', '2007 - 2013 ACURA MDX', 'EK3P-HO03 EK3LB-HO03 HO03-GTK', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'MDX', '2001 - 2006 ACURA MDX', 'HD106-PT', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'MDX', '2001 - 2006 ACURA MDX', 'HD106-PT5', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'MDX', '2001 - 2006 ACURA MDX', 'HD107-PT', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'MDX', '2001 - 2006 ACURA MDX', 'HD107-PT5', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'NSX', '2017 - 2018 ACURA NSX', 'OEM 72147-T6N-A01 OR 72147-T6N-A11', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'NSX', '1997 - 2005 ACURA NSX', 'HD106-PT', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'NSX', '1997 - 2005 ACURA NSX', 'HD106-PT5', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'NSX', '1997 - 2005 ACURA NSX', 'HD107-PT', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'NSX', '1997 - 2005 ACURA NSX', 'HD107-PT5', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'NSX', '1991 - 1996 ACURA NSX', 'X204 HD99 [-P]', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'NSX', '1991 - 1996 ACURA NSX', 'X205 HD100 [-P]', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP/SDD/TKO', 'Megamos (13) Fixed Code System' ),
+( 'ACURA', 'RDX', '2019 - 2020 ACURA RDX', 'OEM 72147-TJB-A01
+72147-TJB-A11', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'RDX', '2016 - 2018 ACURA RDX', 'OEM 72147-TZ5-A01
+72147-TZ5-A11', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'RDX', '2013 - 2015 ACURA RDX', 'OEM 72147-TX4-A41
+72147-TX4-A51', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'RDX', '2007 - 2012 ACURA RDX', 'HO03-PT(V)', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP', 'High Security Key. Philips (46) Encrypted System' ),
+( 'ACURA', 'RDX', '2007 - 2012 ACURA RDX', 'EK3P-HO03 EK3LB-HO03 HO03-GTK', 'K001-N718 Card: 2354', 'Service Key HO01-SVC', 'Smart Pro/TCP/MVPP', 'High Security Key. Philips (46) Encrypted System' ),
