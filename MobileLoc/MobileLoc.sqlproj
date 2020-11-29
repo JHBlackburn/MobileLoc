@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{8c452b48-c700-45c7-9916-5895c06b139e}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureDatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -70,6 +70,8 @@
     <None Include="products\sprocs\uspMergeAutoProduct.sql" />
     <Build Include="Schemas\stage.sql" />
     <Build Include="stage\IlcoEntry.sql" />
+    <Build Include="Schemas\auto.sql" />
+    <None Include="Scripts\PostDeploy\SeedReflashAuto.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\PostDeploy\Script.PostDeploy.sql">
