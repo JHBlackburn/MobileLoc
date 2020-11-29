@@ -1,0 +1,8 @@
+﻿CREATE TABLE auto.[ReflashRequired]
+(
+	ItemName NVARCHAR(100) NOT NULL PRIMARY KEY,
+	[Year] INT NOT NULL,
+	MakeName NVARCHAR(100) NOT NULL,
+	ModelName NVARCHAR(100) NOT NULL
+
+)

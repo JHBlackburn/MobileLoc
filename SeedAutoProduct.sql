@@ -1,5 +1,5 @@
-﻿ALTER PROCEDURE products.uspMergeAutoProduct
-AS BEGIN
+--ALTER PROCEDURE uspMergeAutoProduct
+--AS BEGIN
 	SET NOCOUNT ON
 
 	DROP TABLE IF EXISTS #ilcoKeyBlankEntry
@@ -6061,4 +6061,6 @@ AS BEGIN
 		/*************************END MERGE**********************************/
 
 
-END
+--END
+
+SELECT * from products.AutoProduct
