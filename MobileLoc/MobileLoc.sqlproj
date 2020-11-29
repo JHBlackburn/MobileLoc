@@ -72,7 +72,9 @@
     <Build Include="stage\IlcoEntry.sql" />
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="Scripts\PostDeploy\Script.PostDeploy.sql" />
+    <PostDeploy Include="Scripts\PostDeploy\Script.PostDeploy.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </PostDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\PostDeploy\SeedAutoProduct.sql" />
