@@ -63,6 +63,8 @@
     <Folder Include="stage" />
     <Folder Include="Scripts" />
     <Folder Include="Scripts\PostDeploy" />
+    <Folder Include="auto" />
+    <Folder Include="auto\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schemas\products.sql" />
@@ -72,6 +74,7 @@
     <Build Include="stage\IlcoEntry.sql" />
     <Build Include="Schemas\auto.sql" />
     <None Include="Scripts\PostDeploy\SeedReflashAuto.sql" />
+    <Build Include="auto\Tables\ReflashRequired.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\PostDeploy\Script.PostDeploy.sql">
