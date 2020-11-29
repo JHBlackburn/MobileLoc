@@ -75,6 +75,8 @@
     <Build Include="Schemas\auto.sql" />
     <None Include="Scripts\PostDeploy\SeedReflashAuto.sql" />
     <Build Include="auto\Tables\ReflashRequired.sql" />
+    <Build Include="stage\SquareItem.sql" />
+    <Build Include="stage\IlcoEntryKeyBlank.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\PostDeploy\Script.PostDeploy.sql">

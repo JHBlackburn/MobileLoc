@@ -5869,11 +5869,99 @@
 	DROP TABLE IF EXISTS #distinctKeyBlank
 
 	SELECT DISTINCT 
-		KeyBlankDetails
+		KeyBlankDetails,
+		CAST(NULL AS NVARCHAR(100)) AS KeyBlankType
 		INTO #distinctKeyBlank
-		FROM #ilcoKeyBlankEntry
+		FROM #ilcoKeyBlankEntry s
+		WHERE NULLIF(s.KeyBlankDetails, '') IS NOT NULL
+
+		--select * from #distinctKeyBlank
+
+		UPDATE kb
+			SET KeyBlankType = 'HiSecurity'
+		--SELECT *
+		FROM #distinctKeyBlank as kb
+		JOIN #ilcoKeyBlankEntry ilco
+			ON kb.KeyBlankDetails = ilco.KeyBlankDetails
+		WHERE KeyBlankType IS NULL 
+			AND ilco.NotesText like '%High Security Key%'
+
+		--select * from #distinctKeyBlank
+
+		UPDATE kb
+			SET KeyBlankType = 'Transponder'
+		--SELECT *
+		FROM #distinctKeyBlank as kb
+		JOIN #ilcoKeyBlankEntry ilco
+		ON kb.KeyBlankDetails = ilco.KeyBlankDetails
+		WHERE KeyBlankType IS NULL 
+		AND NULLIF(ilco.ProgramWithText,'') IS NOT NULL
+		AND (
+				kb.KeyBlankDetails LIKE '%-PC%'
+				OR kb.KeyBlankDetails like '%EK3%'
+				OR kb.KeyBlankDetails like '%-PT%'
+			)
+
+		--select * from #distinctKeyBlank
+
+		UPDATE #distinctKeyBlank
+		SET KeyBlankType = 'VATS'
+		WHERE KeyBlankType IS NULL 
+		AND (KeyBlankDetails LIKE '%VATS%')
+
+		--select * from #distinctKeyBlank
+
+		UPDATE #distinctKeyBlank
+		SET KeyBlankType = 'Metal'
+		WHERE KeyBlankType IS NULL
+
+		--select * from #distinctKeyBlank
+
+		SELECT * FROM #distinctKeyBlank kb
+		JOIN #ilcoKeyBlankEntry ilco
+		ON ilco.KeyBlankDetails = kb.KeyBlankDetails
+		ORDER BY KeyBlankType
+
+		--select * from #distinctKeyBlank
 
 
+
+		--select * from stage.IlcoEntryKeyBlank
+		--TRUNCATE TABLE stage.IlcoEntryKeyBlank
+		/*************************BEGIN MERGE**********************************/
+		MERGE INTO stage.IlcoEntryKeyBlank AS t  
+				USING 
+				(
+					SELECT
+						KeyBlankDetails,
+						KeyBlankType
+
+						FROM #distinctKeyBlank
+				)  AS s  
+				ON s.KeyBlankDetails = t.KeyBlankDetails
+				WHEN MATCHED 
+					THEN UPDATE 
+						SET 
+							t.KeyBlankType = s.KeyBlankType
+
+				WHEN NOT MATCHED BY TARGET THEN  
+					INSERT 
+					(
+						KeyBlankDetails,
+						KeyBlankType
+					) 	
+					VALUES
+					(
+						KeyBlankDetails,
+						KeyBlankType
+					)
+				;
+		/*************************END MERGE**********************************/
+
+		select * from stage.IlcoEntryKeyBlank
+
+
+		------------------------------------------------------------------------------------------------
 
 		--list of keyblanks concatenated at make model, year range, grain
 		DROP TABLE IF EXISTS #MakeModelKeyBlank
@@ -5899,6 +5987,8 @@
 		INTO #MakeModelKeyBlank
 		FROM #ilcoKeyBlankEntry ilco2
 
+
+		
 		--remove last delimitor
 		UPDATE #MakeModelKeyBlank 
 		SET KeyBlanks = LEFT(KeyBlanks, LEN(KeyBlanks)-2) 
