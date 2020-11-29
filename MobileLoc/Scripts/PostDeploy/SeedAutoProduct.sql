@@ -5866,6 +5866,15 @@
 	( 'WHITE-GMC-VOLVO', 'Volvo Loader', '1987 - 1987 WHITE-GMC-VOLVO Volvo Loader', 'X51 AA2', '2001-4949 Card: 118', '-', '', '' )
 	---------------------------------------------------------------
 
+	DROP TABLE IF EXISTS #distinctKeyBlank
+
+	SELECT DISTINCT 
+		KeyBlankDetails
+		INTO #distinctKeyBlank
+		FROM #ilcoKeyBlankEntry
+
+
+
 		--list of keyblanks concatenated at make model, year range, grain
 		DROP TABLE IF EXISTS #MakeModelKeyBlank
 		SELECT DISTINCT 
@@ -5882,9 +5891,9 @@
 							ORDER BY ilco1.MakeName
 							FOR XML PATH ('')
 						),
-			--CodeSeries = ilco2.CodeSeriesText,
-			--ProgramWith =ilco2.ProgramWithText, 
-			--Substitute = ilco2.SubstituteText, 
+			CodeSeries = ilco2.CodeSeriesText,
+			ProgramWith =ilco2.ProgramWithText, 
+			Substitute = ilco2.SubstituteText, 
 			Notes = ilco2.NotesText
 
 		INTO #MakeModelKeyBlank
@@ -5984,12 +5993,11 @@
 			ModelName, 
 			Year = [TheYear], 
 			IlcoEntryTitle = EntryTitle,
-			KeyBlanks
-			--, 
-			--CodeSeries, 
-			--ProgramWith, 
-			--Substitute, 
-			--Notes
+			KeyBlanks, 
+			CodeSeries, 
+			ProgramWith, 
+			Substitute, 
+			Notes
 		INTO #finalMakeModelYear
 		FROM #MakeModelKeyBlank mmkb
 		LEFT JOIN #distinctYears dy
@@ -6006,12 +6014,11 @@
 						ModelName, 
 						[Year], 
 						IlcoEntryTitle,
-						KeyBlanks
-						--, 
-						--CodeSeries, 
-						--ProgramWith, 
-						--Substitute, 
-						--Notes
+						KeyBlanks, 
+						CodeSeries, 
+						ProgramWith, 
+						Substitute, 
+						Notes
 
 						FROM #finalMakeModelYear
 				)  AS s  
@@ -6023,11 +6030,11 @@
 						SET 
 							t.YearMakeModel = s.YearMakeModel,
 							t.IlcoEntryTitle = s.IlcoEntryTitle,
-							t.IlcoKeyBlanks = s.KeyBlanks--,
-							--t.IlcoCodeSeries = s.CodeSeries,
-							--t.IlcoProgramWith = s.ProgramWith,
-							--t.IlcoSubstitute = s.Substitute,
-							--t.IlcoNotes = s.Notes
+							t.IlcoKeyBlanks = s.KeyBlanks,
+							t.IlcoCodeSeries = s.CodeSeries,
+							t.IlcoProgramWith = s.ProgramWith,
+							t.IlcoSubstitute = s.Substitute,
+							t.IlcoNotes = s.Notes
 
 				WHEN NOT MATCHED BY TARGET THEN  
 					INSERT 
@@ -6037,11 +6044,11 @@
 						ModelName, 
 						[Year], 
 						IlcoEntryTitle,
-						IlcoKeyBlanks--, 
-						--IlcoCodeSeries, 
-						--IlcoProgramWith, 
-						--IlcoSubstitute, 
-						--IlcoNotes
+						IlcoKeyBlanks, 
+						IlcoCodeSeries, 
+						IlcoProgramWith, 
+						IlcoSubstitute, 
+						IlcoNotes
 					) 	
 					VALUES
 					(
@@ -6050,11 +6057,11 @@
 						ModelName, 
 						[Year], 
 						IlcoEntryTitle,
-						KeyBlanks--, 
-						--CodeSeries, 
-						--ProgramWith, 
-						--Substitute, 
-						--Notes
+						KeyBlanks, 
+						CodeSeries, 
+						ProgramWith, 
+						Substitute, 
+						Notes
 					)
 				;
 		/*************************END MERGE**********************************/
@@ -6062,4 +6069,4 @@
 
 --END
 
-SELECT * from products.AutoProduct
+--SELECT * from products.AutoProduct
