@@ -1,4 +1,4 @@
-﻿DROP TABLE IF EXISTS #ilcoKeyBlankEntry
+﻿--DROP TABLE IF EXISTS #ilcoKeyBlankEntry
 
 CREATE TABLE #ilcoKeyBlankEntry
 (
