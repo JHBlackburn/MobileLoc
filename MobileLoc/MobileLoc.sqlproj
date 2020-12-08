@@ -89,6 +89,6 @@
     <None Include="Scripts\PostDeploy\SeedAutoProduct.sql" />
     <None Include="Scripts\PostDeploy\SeedIlcoEntry.sql" />
     <None Include="Scripts\PostDeploy\ClassifyIlcoEntryKeyBlank.sql" />
-    <None Include="Scripts\PostDeploy\MergeYearMakeModel.sql" />
+    <None Include="Scripts\PostDeploy\SeedIlcoEntryYearMakeModel.sql" />
   </ItemGroup>
 </Project>
