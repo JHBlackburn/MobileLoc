@@ -12,3 +12,4 @@ Post-Deployment Script Template
 
 :r .\SeedIlcoEntry.sql
 :r .\ClassifyIlcoEntryKeyBlank.sql
+:r .\MergeYearMakeModel.sql
