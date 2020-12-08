@@ -1,4 +1,4 @@
-﻿CREATE TABLE auto.[ReflashRequired]
+﻿CREATE TABLE autos.[ReflashRequired]
 (
 	ItemName NVARCHAR(100) NOT NULL PRIMARY KEY,
 	[Year] INT NOT NULL,
