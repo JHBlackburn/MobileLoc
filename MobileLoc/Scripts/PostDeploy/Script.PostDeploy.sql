@@ -10,5 +10,5 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
-:r .\SeedAutoProduct.sql
---:r .\SeedReflashAuto.sql
+:r .\SeedIlcoEntry.sql
+:r .\ClassifyIlcoEntryKeyBlank.sql

@@ -72,11 +72,12 @@
     <None Include="products\sprocs\uspMergeAutoProduct.sql" />
     <Build Include="Schemas\stage.sql" />
     <Build Include="stage\IlcoEntry.sql" />
-    <Build Include="Schemas\auto.sql" />
+    <Build Include="Schemas\autos.sql" />
     <None Include="Scripts\PostDeploy\SeedReflashAuto.sql" />
     <Build Include="auto\Tables\ReflashRequired.sql" />
     <Build Include="stage\SquareItem.sql" />
     <Build Include="stage\IlcoEntryKeyBlank.sql" />
+    <Build Include="auto\Tables\YearMakeModel.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\PostDeploy\Script.PostDeploy.sql">
@@ -85,5 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\PostDeploy\SeedAutoProduct.sql" />
+    <None Include="Scripts\PostDeploy\SeedIlcoEntry.sql" />
+    <None Include="Scripts\PostDeploy\ClassifyIlcoEntryKeyBlank.sql" />
   </ItemGroup>
 </Project>
