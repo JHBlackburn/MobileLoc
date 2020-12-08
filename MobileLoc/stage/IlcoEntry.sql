@@ -1,5 +1,6 @@
 ﻿CREATE TABLE stage.[IlcoEntry]
 (
+	Id INT PRIMARY KEY NOT NULL IDENTITY(1,1),
 	MakeName NVARCHAR(100) NOT NULL,
 	ModelName NVARCHAR(100) NOT NULL,
 	EntryTitle NVARCHAR(500) NOT NULL,
@@ -18,6 +19,6 @@
 	DateCreated DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
 	DateModified DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
 
-	CONSTRAINT PK_stage_IlcoEntry PRIMARY KEY CLUSTERED (MakeName, ModelName, EntryTitle, KeyBlankDetails)
+	CONSTRAINT PK_stage_IlcoEntry UNIQUE (MakeName, ModelName, EntryTitle, KeyBlankDetails)
 )
 GO

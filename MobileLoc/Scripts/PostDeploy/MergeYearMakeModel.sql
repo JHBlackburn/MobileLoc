@@ -1,6 +1,7 @@
 ﻿		--list of keyblanks concatenated at make model, year range, grain
 		DROP TABLE IF EXISTS #tempYearRangeEntry
 		SELECT DISTINCT 
+			IlcoEntryId = ilco2.Id, 
 			ilco2.MakeName, 
 			ilco2.ModelName,
 			ilco2.EntryTitle,
@@ -95,9 +96,10 @@
 		--Move to (make, model, year) grain
 		DROP TABLE IF EXISTS #tempYearMakeModel
 		SELECT DISTINCT
+			IlcoEntryId,
+			Year = [TheYear], 
 			MakeName, 
 			ModelName, 
-			Year = [TheYear], 
 			EntryTitle
 		INTO #tempYearMakeModel
 		FROM #tempYearRangeEntry mmkb
@@ -106,10 +108,11 @@
 
 
 		/*************************BEGIN MERGE**********************************/
-		MERGE INTO autos.YearMakeModel AS t  
+		MERGE INTO stage.IlcoEntryYearMakeModel AS t  
 				USING 
 				(
-					SELECT DISTINCT
+					SELECT
+						IlcoEntryId,
 						[Year], 
 						MakeName, 
 						ModelName, 
@@ -117,7 +120,8 @@
 
 						FROM #tempYearMakeModel
 				)  AS s  
-				ON s.Year = t.Year
+				ON s.IlcoEntryId = t.IlcoEntryId
+				AND s.Year = t.Year
 				AND s.MakeName = t.Make
 				AND s.ModelName = t.Model
 
@@ -130,6 +134,7 @@
 				WHEN NOT MATCHED BY TARGET THEN  
 					INSERT 
 					(
+						IlcoEntryId, 
 						[Year], 
 						Make, 
 						Model, 
@@ -137,6 +142,7 @@
 					) 	
 					VALUES
 					(
+						IlcoEntryId, 
 						[Year], 
 						MakeName, 
 						ModelName, 

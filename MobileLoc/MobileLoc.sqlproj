@@ -78,6 +78,7 @@
     <Build Include="stage\SquareItem.sql" />
     <Build Include="stage\IlcoEntryKeyBlank.sql" />
     <Build Include="auto\Tables\YearMakeModel.sql" />
+    <Build Include="stage\IlcoEntryYearMakeModel.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\PostDeploy\Script.PostDeploy.sql">
