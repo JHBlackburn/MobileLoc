@@ -1,12 +1,14 @@
 ﻿
 	DROP TABLE IF EXISTS #tempIlcoEntry
 
-	SELECT DISTINCT 
+	SELECT 
+		Id,
 		KeyBlankDetails,
 		IsCloner = CAST(0 as BIT),
 		IsTransponder = CAST(0 as BIT),
 		IsVATS = CAST(0 as BIT),
 		IsProx = CAST(0 as BIT),
+		IsReflashRequired = CAST(0 AS BIT),
 		KeyBladeType = CAST(NULL AS NVARCHAR(100)),
 		MakeName,
 		ModelName,
@@ -60,6 +62,25 @@
 		AND ModelName NOT LIKE '%w/o%'
 
 
+		
+		------------------------------------------
+		------------REFLASH REQUIRED--------------
+		------------------------------------------				
+		UPDATE kb
+			SET IsReflashRequired = 1
+		FROM #tempIlcoEntry as kb
+		WHERE 
+			KeyBladeType IS NULL 
+			AND 
+				(
+					kb.NotesText like 'High Security Key'
+					OR CodeSeriesText like '%Z0001-Z6000%'
+					OR CodeSeriesText like '%V0001-V5718%'
+				)
+
+
+
+
 		-------------------------------------------------------	
 		-----------------Key Blade Type------------------------	
 		-------------------------------------------------------
@@ -102,4 +123,35 @@
 
 
 
+
+
 		--SELECT * FROM #tempIlcoEntry
+
+		
+		/*************************BEGIN MERGE**********************************/
+		MERGE INTO stage.IlcoEntry AS t  
+				USING 
+				(
+					SELECT
+					Id,
+					IsCloner,
+					IsTransponder,
+					IsProx,	
+					IsVATS,
+					KeyBladeType
+
+					FROM #tempIlcoEntry
+				)  AS s  
+				ON s.Id = t.Id
+
+				WHEN MATCHED 
+					THEN UPDATE 
+						SET 
+							IsCloner = s.IsCloner,
+							IsTransponder = s.IsTransponder,
+							IsProx = s.IsProx,
+							IsVATS = s.IsVATS,
+							DateModified = GETUTCDATE()
+
+				;
+		/*************************END MERGE**********************************/
