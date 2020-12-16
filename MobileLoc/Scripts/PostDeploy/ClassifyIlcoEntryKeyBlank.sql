@@ -9,6 +9,7 @@
 		IsVATS = CAST(0 as BIT),
 		IsProx = CAST(0 as BIT),
 		IsReflashRequired = CAST(0 AS BIT),
+		IsNoFlyList = CAST(0 AS BIT),
 		KeyBladeType = CAST(NULL AS NVARCHAR(100)),
 		MakeName,
 		ModelName,
@@ -31,7 +32,7 @@
 		WHERE (
 				kb.KeyBlankDetails like '%GTK%'
 				OR kb.KeyBlankDetails like '%EK3%'
-				OR (kb.KeyBlankDetails like '%PT5%' ANd kb.KeyBlankDetails like '%HD%')
+				OR kb.KeyBlankDetails like '%PT5%'
 				OR kb.KeyBlankDetails like '%FO21MH%'
 				)
 		
@@ -43,6 +44,7 @@
 		--SELECT *
 		FROM #tempIlcoEntry as kb
 		WHERE NULLIF(kb.ProgramWithText, '') IS NOT NULL
+		AND kb.ProgramWithText <> '-'
 
 			
 		------------------------------------------
@@ -58,8 +60,9 @@
 		------------------------------------------					
 		UPDATE #tempIlcoEntry
 		SET IsProx = 1
-		WHERE ModelName LIKE '%PROX%' 
-		AND ModelName NOT LIKE '%w/o%'
+		WHERE 
+		(ModelName LIKE '%PROX%' AND ModelName NOT LIKE '%w/o%')
+		OR (EntryTitle LIKE '%PROX%' AND EntryTitle NOT LIKE '%w/o%')
 
 
 		
@@ -69,14 +72,8 @@
 		UPDATE kb
 			SET IsReflashRequired = 1
 		FROM #tempIlcoEntry as kb
-		WHERE 
-			KeyBladeType IS NULL 
-			AND 
-				(
-					kb.NotesText like 'High Security Key'
-					OR CodeSeriesText like '%Z0001-Z6000%'
-					OR CodeSeriesText like '%V0001-V5718%'
-				)
+		WHERE KeyBlankDetails like '%TOY43AT4%'
+		-- hardcoded vehicles added too
 
 
 
@@ -102,7 +99,7 @@
 							KeyBlankDetails			LIKE '%FO21T7%' 
 							OR kb.KeyBlankDetails	LIKE '%FO21T17%'  
 							OR KeyBlankDetails		LIKE '%TBE1T5%'  
-							OR KeyBlankDetails		LIKE '%FO21MH%'  
+							OR KeyBlankDetails		LIKE '%FO21MH%' 
 						)
 				)
 
@@ -116,16 +113,64 @@
 			KeyBladeType IS NULL 
 			AND 
 				(
-					kb.NotesText like 'High Security Key'
+					kb.NotesText like '%High Security Key%'
+					OR MakeName LIKE '%LEXUS%'
 					OR CodeSeriesText like '%Z0001-Z6000%'
 					OR CodeSeriesText like '%V0001-V5718%'
+
+					OR KeyBlankDetails like '%HU101T%'
+					OR KeyBlankDetails like '%SIP22-GTS%'
+					OR KeyBlankDetails like '%HY18-P%'
+					OR KeyBlankDetails like '%HY18R-P%'
+					OR KeyBlankDetails like '%LX90-P%'
+					OR KeyBlankDetails like '%LXP90-P%'
+					OR KeyBlankDetails like '%LXV90-P%'
+					OR KeyBlankDetails like '%KK10-P%'
+					OR KeyBlankDetails like '%KK12-P%'
+					OR KeyBlankDetails like '%HY20-PT%'
+					OR KeyBlankDetails like '%HY22%'
+					OR KeyBlankDetails like '%HY22%'
+					OR KeyBlankDetails like '%TOY51-P%'
+					OR KeyBlankDetails like '%TOY48EMER%'
+					
+					OR SubstituteText like '%HU101T%'
+					OR SubstituteText like '%SIP22-GTS%'
+					OR SubstituteText like '%HY18-P%'
+					OR SubstituteText like '%HY18R-P%'
+					OR SubstituteText like '%LX90-P%'
+					OR SubstituteText like '%LXP90-P%'
+					OR SubstituteText like '%LXV90-P%'
+					OR SubstituteText like '%KK10-P%'
+					OR SubstituteText like '%KK12-P%'
+					OR SubstituteText like '%HY20-PT%'
+					OR SubstituteText like '%HY22%'
+					OR SubstituteText like '%TOY51-P%'
+					OR SubstituteText like '%TOY48EMER%'
+
 				)
 
+		------------------------------------------
+		------------Regular KeyBlade (for everything else)
+		------------------------------------------	
+		UPDATE kb
+			SET KeyBladeType = 'Regular'
+		FROM #tempIlcoEntry as kb
+		WHERE KeyBladeType IS NULL
 
 
 
+		------------------------------------------
+		------------NO FLY LIST------
+		------------------------------------------				
+		UPDATE kb
+			SET IsNoFlyList = 1
+		FROM #tempIlcoEntry as kb
+		WHERE 
+			MakeName IN ('AUDI', 'BMW', 'FERRARI', 'FIAT', 'MERCEDES', 'MINI', 'PORSCHE', 'SAAB', 'SMART', 'VOLVO', 'LAND ROVER')
+			--VW past >=2009
 
-		--SELECT * FROM #tempIlcoEntry
+
+
 
 		
 		/*************************BEGIN MERGE**********************************/
@@ -138,6 +183,8 @@
 					IsTransponder,
 					IsProx,	
 					IsVATS,
+					IsReflashRequired,
+					IsNoFlyList,
 					KeyBladeType
 
 					FROM #tempIlcoEntry
@@ -151,6 +198,9 @@
 							IsTransponder = s.IsTransponder,
 							IsProx = s.IsProx,
 							IsVATS = s.IsVATS,
+							IsReflashRequired = s.IsReflashRequired,
+							IsNoFlyList = s.IsNoFlyList,
+							KeyBladeType = s.KeyBladeType,
 							DateModified = GETUTCDATE()
 
 				;
