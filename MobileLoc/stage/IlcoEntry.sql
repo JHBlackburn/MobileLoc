@@ -14,11 +14,12 @@
 	IsProx BIT NOT NULL DEFAULT 0,	
 	IsVATS BIT NOT NULL DEFAULT 0,
 	IsReflashRequired BIT NOT NULL DEFAULT 0,
+	IsNoFlyList BIT NOT NULL DEFAULT 0,
 	KeyBladeType NVARCHAR(100) NULL,
 	IsActive BIT NOT NULL DEFAULT 1, 
 	DateCreated DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
 	DateModified DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
 
-	CONSTRAINT PK_stage_IlcoEntry UNIQUE (MakeName, ModelName, EntryTitle, KeyBlankDetails)
+	CONSTRAINT PK_stage_IlcoEntry UNIQUE (MakeName, ModelName, EntryTitle, KeyBlankDetails, CodeSeriesText)
 )
 GO
