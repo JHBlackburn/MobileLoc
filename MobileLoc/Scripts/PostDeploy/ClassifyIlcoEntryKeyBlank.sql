@@ -20,7 +20,6 @@
 		NotesText
 		INTO #tempIlcoEntry
 		FROM stage.IlcoEntry s
-		WHERE NULLIF(s.KeyBlankDetails, '') IS NOT NULL
 		
 		------------------------------------------
 		------------------CLONERs-----------------

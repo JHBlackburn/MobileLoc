@@ -63,8 +63,8 @@
     <Folder Include="stage" />
     <Folder Include="Scripts" />
     <Folder Include="Scripts\PostDeploy" />
-    <Folder Include="auto" />
-    <Folder Include="auto\Tables" />
+    <Folder Include="autos" />
+    <Folder Include="autos\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schemas\products.sql" />
@@ -74,21 +74,22 @@
     <Build Include="stage\IlcoEntry.sql" />
     <Build Include="Schemas\autos.sql" />
     <None Include="Scripts\PostDeploy\SeedReflashAuto.sql" />
-    <Build Include="auto\Tables\ReflashRequired.sql" />
     <Build Include="stage\SquareItem.sql" />
     <Build Include="stage\IlcoEntryKeyBlank.sql" />
-    <Build Include="auto\Tables\YearMakeModel.sql" />
-    <Build Include="stage\IlcoEntryYearMakeModel.sql" />
+    <Build Include="stage\IlcoEntryYearMakeModelKeyBlank.sql" />
+    <Build Include="autos\Tables\ReflashRequired.sql" />
+    <Build Include="autos\Tables\YearMakeModel.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\PostDeploy\Script.PostDeploy.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </PostDeploy>
+    <None Include="Scripts\PostDeploy\SeedYearMakeModel.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\PostDeploy\SeedAutoProduct.sql" />
     <None Include="Scripts\PostDeploy\SeedIlcoEntry.sql" />
     <None Include="Scripts\PostDeploy\ClassifyIlcoEntryKeyBlank.sql" />
-    <None Include="Scripts\PostDeploy\SeedIlcoEntryYearMakeModel.sql" />
+    <None Include="Scripts\PostDeploy\SeedIlcoEntryYearMakeModelKeyBlank.sql" />
   </ItemGroup>
 </Project>

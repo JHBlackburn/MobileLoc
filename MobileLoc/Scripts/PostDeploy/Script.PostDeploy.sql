@@ -12,4 +12,5 @@ Post-Deployment Script Template
 
 :r .\SeedIlcoEntry.sql
 :r .\ClassifyIlcoEntryKeyBlank.sql
-:r .\SeedIlcoEntryYearMakeModel.sql
+:r .\SeedIlcoEntryYearMakeModelKeyBlank.sql
+:r .\SeedYearMakeModel.sql

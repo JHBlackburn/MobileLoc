@@ -4,9 +4,23 @@
 			IlcoEntryId = ilco2.Id, 
 			ilco2.MakeName, 
 			ilco2.ModelName,
-			ilco2.EntryTitle,
+
 			StartYear = cast(null AS NVARCHAR(10)),
-			EndYear = cast(null AS NVARCHAR(10))
+			EndYear = cast(null AS NVARCHAR(10)),
+
+			ilco2.EntryTitle,
+			ilco2.KeyBlankDetails,
+			ilco2.CodeSeriesText,
+			ilco2.SubstituteText,
+			ilco2.ProgramWithText,
+			ilco2.NotesText,
+			ilco2.KeyBladeType,
+			ilco2.IsCloner,
+			ilco2.IsTransponder,
+			ilco2.IsProx,	
+			ilco2.IsVATS,
+			ilco2.IsReflashRequired,
+			ilco2.IsNoFlyList
 
 		INTO #tempYearRangeEntry
 		FROM stage.IlcoEntry ilco2
@@ -94,31 +108,57 @@
 
 		----------------------------------------------------------------------
 		--Move to (make, model, year) grain
-		DROP TABLE IF EXISTS #tempYearMakeModel
+		DROP TABLE IF EXISTS #tempYearMakeModelKeyBlank
 		SELECT DISTINCT
 			IlcoEntryId,
 			Year = [TheYear], 
 			MakeName, 
 			ModelName, 
-			EntryTitle
-		INTO #tempYearMakeModel
+			EntryTitle,
+			KeyBlankDetails,
+			CodeSeriesText,
+			SubstituteText,
+			ProgramWithText,
+			NotesText,
+			KeyBladeType,
+			IsCloner,
+			IsTransponder,
+			IsProx,	
+			IsVATS,
+			IsReflashRequired,
+			IsNoFlyList
+
+		INTO #tempYearMakeModelKeyBlank
 		FROM #tempYearRangeEntry mmkb
 		LEFT JOIN #distinctYears dy
 		on dy.TheYear BETWEEN TRY_CAST(mmkb.StartYear as int) and TRY_CAST(mmkb.EndYear as int)
 
 
 		/*************************BEGIN MERGE**********************************/
-		MERGE INTO stage.IlcoEntryYearMakeModel AS t  
+		MERGE INTO stage.IlcoEntryYearMakeModelKeyBlank AS t  
 				USING 
 				(
 					SELECT
 						IlcoEntryId,
 						[Year], 
 						MakeName, 
-						ModelName, 
+						ModelName,
+						EntryTitle,
+						KeyBlankDetails,
+						CodeSeriesText,
+						SubstituteText,
+						ProgramWithText,
+						NotesText,
+						KeyBladeType,
+						IsCloner,
+						IsTransponder,
+						IsProx,	
+						IsVATS,
+						IsReflashRequired,
+						IsNoFlyList,
 						1 as IsActive
 
-						FROM #tempYearMakeModel
+						FROM #tempYearMakeModelKeyBlank
 				)  AS s  
 				ON s.IlcoEntryId = t.IlcoEntryId
 				AND s.Year = t.Year
@@ -128,6 +168,19 @@
 				WHEN MATCHED 
 					THEN UPDATE 
 						SET 
+							EntryTitle = s.EntryTitle,
+							KeyBlankDetails = s.KeyBlankDetails,
+							CodeSeriesText = s.CodeSeriesText,
+							SubstituteText = s.SubstituteText,
+							ProgramWithText = s.ProgramWithText,
+							NotesText = s.NotesText,
+							KeyBladeType = s.KeyBladeType,
+							IsCloner = s.IsCloner,
+							IsTransponder = s.IsTransponder,
+							IsProx = s.IsProx,	
+							IsVATS = s.IsVATS,
+							IsReflashRequired = s.IsReflashRequired,
+							IsNoFlyList = s.IsNoFlyList,
 							t.IsActive = s.IsActive,
 							DateModified = GETUTCDATE()
 
@@ -138,6 +191,19 @@
 						[Year], 
 						Make, 
 						Model, 
+						EntryTitle,
+						KeyBlankDetails,
+						CodeSeriesText,
+						SubstituteText,
+						ProgramWithText,
+						NotesText,
+						KeyBladeType,
+						IsCloner,
+						IsTransponder,
+						IsProx,	
+						IsVATS,
+						IsReflashRequired,
+						IsNoFlyList,
 						IsActive
 					) 	
 					VALUES
@@ -146,6 +212,19 @@
 						[Year], 
 						MakeName, 
 						ModelName, 
+						EntryTitle,
+						KeyBlankDetails,
+						CodeSeriesText,
+						SubstituteText,
+						ProgramWithText,
+						NotesText,
+						KeyBladeType,
+						IsCloner,
+						IsTransponder,
+						IsProx,	
+						IsVATS,
+						IsReflashRequired,
+						IsNoFlyList,
 						IsActive
 					)
 
