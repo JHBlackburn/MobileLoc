@@ -14,3 +14,4 @@ Post-Deployment Script Template
 :r .\ClassifyIlcoEntryKeyBlank.sql
 :r .\SeedIlcoEntryYearMakeModelKeyBlank.sql
 :r .\SeedYearMakeModel.sql
+:r .\StageSquareItemAutoCategory.sql

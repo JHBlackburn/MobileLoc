@@ -82,7 +82,7 @@
 		MERGE INTO autos.[YearMakeModel] AS t  
 				USING 
 				(
-					SELECT
+					SELECT DISTINCT
 						[Year], 
 						Make, 
 						Model,
@@ -105,6 +105,7 @@
 				ON s.Year = t.Year
 				AND s.Make = t.Make
 				AND s.Model = t.Model
+				AND s.KeyBladeType = t.KeyBladeType
 
 				WHEN MATCHED 
 					THEN UPDATE 
@@ -114,7 +115,6 @@
 							Substitute = s.Substitute,
 							ProgramWith = s.ProgramWith,
 							Notes = s.Notes,
-							KeyBladeType = s.KeyBladeType,
 							IsCloner = s.IsCloner,
 							IsTransponder = s.IsTransponder,
 							IsProx = s.IsProx,	

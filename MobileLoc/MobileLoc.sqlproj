@@ -91,5 +91,6 @@
     <None Include="Scripts\PostDeploy\SeedIlcoEntry.sql" />
     <None Include="Scripts\PostDeploy\ClassifyIlcoEntryKeyBlank.sql" />
     <None Include="Scripts\PostDeploy\SeedIlcoEntryYearMakeModelKeyBlank.sql" />
+    <None Include="Scripts\PostDeploy\StageSquareItemAutoCategory.sql" />
   </ItemGroup>
 </Project>
