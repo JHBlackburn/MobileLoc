@@ -86,7 +86,6 @@
 		------------------------------------------	
 		UPDATE kb
 			SET KeyBladeType = 'Tibbe'
-		--SELECT *
 		FROM #tempIlcoEntry as kb
 		WHERE 
 			KeyBladeType IS NULL 
@@ -165,8 +164,8 @@
 			SET IsNoFlyList = 1
 		FROM #tempIlcoEntry as kb
 		WHERE 
-			MakeName IN ('AUDI', 'BMW', 'FERRARI', 'FIAT', 'MERCEDES', 'MINI', 'PORSCHE', 'SAAB', 'SMART', 'VOLVO', 'LAND ROVER')
-			--VW past >=2009
+			MakeName IN ('AUDI', 'BMW', 'FERRARI', 'FIAT', 'MERCEDES BENZ', 'MINI', 'PORSCHE', 'SAAB', 'SMART', 'VOLVO', 'LAND ROVER')
+
 
 
 
