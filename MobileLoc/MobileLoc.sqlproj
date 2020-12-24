@@ -93,5 +93,6 @@
     <None Include="Scripts\PostDeploy\SeedIlcoEntryYearMakeModelKeyBlank.sql" />
     <None Include="Scripts\PostDeploy\StageSquareItemAutoCategory.sql" />
     <None Include="Scripts\PostDeploy\ClassifyReflashByYearMakeModel.sql" />
+    <None Include="Scripts\PostDeploy\ClassifyNoFlyListByYearMakeModel.sql" />
   </ItemGroup>
 </Project>
