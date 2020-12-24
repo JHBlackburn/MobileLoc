@@ -2,7 +2,7 @@
 
 CREATE TABLE #tempSquareItem
 (
-	[Token] nvarchar(255) NULL,
+	[Token] nvarchar(255) NULL DEFAULT(''),
 	[Item Name] nvarchar(255) NULL,
 	[Description] nvarchar(2000) NULL,
 	[Category] nvarchar(255) NULL,
@@ -157,6 +157,7 @@ INSERT INTO #tempSquareItem
 				WHEN MATCHED 
 					THEN UPDATE 
 						SET 
+							Token = s.Token,
 							[Item Name] = s.[Item Name],
 							[Description] = s.[Description],
 							[Category] = s.[Category],
