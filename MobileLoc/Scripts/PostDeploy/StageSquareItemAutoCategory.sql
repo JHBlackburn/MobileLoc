@@ -54,7 +54,11 @@ INSERT INTO #tempSquareItem
 	)
 	SELECT DISTINCT
 		[Item Name] = CONCAT(
-							CASE WHEN ymm.IsNoFlyList = 1 THEN '(NO FLY LIST) ' ELSE '' END,
+							CASE 
+								WHEN ymm.IsNoFlyList = 1 THEN '(NO FLY LIST) ' 
+								WHEN ymm.IsReflashRequired = 1 THEN '(REFLASH) ' 
+								ELSE '' 
+							END,
 							ymm.Year, ' ', 
 							ymm.Make, ' ', 
 							ymm.Model

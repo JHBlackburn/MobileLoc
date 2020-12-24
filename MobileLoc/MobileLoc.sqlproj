@@ -79,7 +79,6 @@
     <Build Include="stage\IlcoEntryYearMakeModelKeyBlank.sql" />
     <Build Include="autos\Tables\ReflashRequired.sql" />
     <Build Include="autos\Tables\YearMakeModel.sql" />
-    <None Include="Scripts\PostDeploy\StageSquareItemNonAuto.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\PostDeploy\Script.PostDeploy.sql">
@@ -93,5 +92,6 @@
     <None Include="Scripts\PostDeploy\ClassifyIlcoEntryKeyBlank.sql" />
     <None Include="Scripts\PostDeploy\SeedIlcoEntryYearMakeModelKeyBlank.sql" />
     <None Include="Scripts\PostDeploy\StageSquareItemAutoCategory.sql" />
+    <None Include="Scripts\PostDeploy\ClassifyReflashByYearMakeModel.sql" />
   </ItemGroup>
 </Project>
